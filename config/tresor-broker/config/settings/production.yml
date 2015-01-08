@@ -1,0 +1,20 @@
+pdp_url: 'http://pdp:8080/policy/:client_id/:service_id'
+pdp_username: 'broker'
+pdp_password: 'broker'
+demo_services:
+  'broker':
+    :uuid: '5d64d146-1d24-426b-9f3c-c75932ebb03e'
+    :url: 'http://broker:3000'
+    :name: 'TRESOR Broker'
+  'pap':
+    :uuid: 'ddd99540-18b4-455c-b98d-b70f7d8588d2'
+    :url: 'http://pap'
+    :name: 'TRESOR Policy Administration Point (PAP)'
+  'logging':
+    :uuid: 'f2f07c7a-1ada-4dbd-afda-3f3950c10fd9'
+    :url: 'http://logging'
+    :name: 'TRESOR Logging Interface'
+  'tresordemo':
+    :uuid: 'cc570ef5-9257-4152-9b2c-2c3632935f66'
+    :url: 'http://tresordemo'
+    :name: 'TRESOR SNET Demo Application'

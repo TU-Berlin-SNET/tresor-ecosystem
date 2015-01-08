@@ -1,0 +1,29 @@
+mongodb:
+  image: dockerfile/mongodb
+  command: mongod --smallfiles
+  volumes:
+    - data/mongodb:/data/db
+
+pdp:
+  build: components/tresor-pdp
+  volumes:
+    - data/policies:/opt/jetty-distribution-9.2.4.v20141103/policies
+
+broker:
+  build: components/tresor-broker
+  volumes:
+    - config/tresor-broker/config/mongoid.yml:/root/tresor-broker/config/mongoid.yml
+    - config/tresor-broker/config/settings/production.yml:/root/tresor-broker/config/settings/production.yml
+    - config/tresor-broker/config/initializers/run_resque_inline.rb:/root/tresor-broker/config/initializers/run_resque_inline.rb
+  links:
+    - mongodb
+    - pdp
+
+proxy:
+  build: components/tresor-proxy
+  command: -b http://broker:3000 -n 127.0.0.1 --sso --xacml -fpurl https://tresor-dev-fp.snet.tu-berlin.de -hrurl http://tresor.snet.tu-berlin.de/trust -pdpurl http://broker:broker@pdp:8080/pdp -l DEBUG
+  links:
+    - broker
+    - pdp
+  ports:
+    - "80:80"

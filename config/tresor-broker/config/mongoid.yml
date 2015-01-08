@@ -1,0 +1,6 @@
+production:
+  sessions:
+    default:
+      database: broker
+      hosts:
+        - mongodb:27017

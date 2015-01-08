@@ -1,0 +1,10 @@
+[submodule "components/tresor-broker"]
+	path = components/tresor-broker
+	url = https://github.com/TU-Berlin-SNET/tresor-broker.git
+[submodule "components/tresor-proxy"]
+	path = components/tresor-proxy
+	url = https://github.com/TU-Berlin-SNET/tresor-proxy.git
+[submodule "components/tresor-pdp"]
+	path = components/tresor-pdp
+	url = https://git.snet.tu-berlin.de/tresor/balana.git
+	branch = develop
