@@ -19,7 +19,7 @@ broker:
     - mongodb
     - pdp
 
-proxy:
+proxyhttp:
   build: components/tresor-proxy
   command: -b http://broker:3000 -n 127.0.0.1 --sso --xacml -fpurl https://tresor-dev-fp.snet.tu-berlin.de -hrurl http://tresor.snet.tu-berlin.de/trust -pdpurl http://broker:broker@pdp:8080/pdp -l DEBUG
   links:
@@ -27,3 +27,14 @@ proxy:
     - pdp
   ports:
     - "80:80"
+
+proxytls:
+  build: components/tresor-proxy
+  command: -b http://broker:3000 -n 127.0.0.1 -p 443 --tls --tls_key certificates/wildcard_key.pem --tls_crt certificates/wildcard_cert_combined.pem --sso --xacml -fpurl https://tresor-dev-fp.snet.tu-berlin.de -hrurl http://tresor.snet.tu-berlin.de/trust -pdpurl http://broker:broker@pdp:8080/pdp -l DEBUG
+  volumes:
+    - config/tresor-proxy/certificates:/root/tresor-proxy/certificates
+  links:
+    - broker
+    - pdp
+  ports:
+    - "443:443"
