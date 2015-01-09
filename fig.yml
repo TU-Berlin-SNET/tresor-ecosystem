@@ -7,7 +7,7 @@ mongodb:
 pdp:
   build: components/tresor-pdp
   volumes:
-    - data/policies:/opt/jetty-distribution-9.2.4.v20141103/policies
+    - data/policies:/opt/jetty-distribution-9.2.6.v20141205/policies
 
 broker:
   build: components/tresor-broker
