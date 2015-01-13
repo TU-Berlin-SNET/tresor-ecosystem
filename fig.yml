@@ -7,7 +7,7 @@ mongodb:
 pdp:
   build: components/tresor-pdp
   volumes:
-    - data/policies:/opt/jetty-distribution-9.2.6.v20141205/policies
+    - data/policies:/opt/policies
 
 broker:
   build: components/tresor-broker
@@ -19,12 +19,21 @@ broker:
     - mongodb
     - pdp
 
+pap:
+  build: components/tresor-pap
+  volumes:
+    - config/tresor-pap/inc/global/overwrites.inc.php:/var/www/html/tresor-pap/inc/global/overwrites.inc.php
+  links:
+    - broker
+    - pdp
+
 proxyhttp:
   build: components/tresor-proxy
   command: -b http://broker:3000 -n 127.0.0.1 --sso --xacml -fpurl https://tresor-dev-fp.snet.tu-berlin.de -hrurl http://tresor.snet.tu-berlin.de/trust -pdpurl http://broker:broker@pdp:8080/pdp -l DEBUG
   links:
     - broker
     - pdp
+    - pap
   ports:
     - "80:80"
 
@@ -36,5 +45,6 @@ proxytls:
   links:
     - broker
     - pdp
+    - pap
   ports:
     - "443:443"

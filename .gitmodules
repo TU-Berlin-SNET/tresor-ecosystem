@@ -8,3 +8,6 @@
 	path = components/tresor-pdp
 	url = https://git.snet.tu-berlin.de/tresor/balana.git
 	branch = develop
+[submodule "components/tresor-pap"]
+	path = components/tresor-pap
+	url = git@git.snet.tu-berlin.de:tresor/tresor-policy-creation-tool.git
