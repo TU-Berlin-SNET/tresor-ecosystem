@@ -4,10 +4,59 @@ mongodb:
   volumes:
     - data/mongodb:/data/db
 
+elasticsearch:
+  image: dockerfile/elasticsearch
+  volumes:
+    - config/elasticsearch:/elasticsearch/config
+    - data/elasticsearch:/data
+  expose:
+    - "9200"
+    - "9300"
+
+logstash:
+  build: components/logstash
+  volumes: 
+    - config/logstash/logstash.conf:/logstash/logstash.conf
+  links:
+    - elasticsearch
+  expose:
+    - "9400"
+    - "9500"
+  ports:
+    - "9400:9400"
+    - "9500:9500"
+
+esfilter:
+  build: components/node-es-filter-proxy
+  links:
+    - elasticsearch
+  environment:
+    - ES_FILTER_HOST=0.0.0.0
+    - ES_FILTER_PORT=4004
+    - ES_HOST=http://elasticsearch
+    - ES_PORT=9200
+  ports:
+    - "4004:4004"
+
+kibana:
+  build: components/node-dynconfig-kibana
+  environment:
+    - KIBANA_HOST=0.0.0.0
+    - KIBANA_PORT=3003
+    - ES_URL=http://localhost:4004
+  ports:
+    - "3003:3003"
+
 pdp:
   build: components/tresor-pdp
   volumes:
     - data/policies:/opt/policies
+  links:
+    - logstash
+  expose:
+    - "8080"
+  ports:
+    - "8080:8080"
 
 broker:
   build: components/tresor-broker

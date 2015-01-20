@@ -1,0 +1,20 @@
+{
+  "name": "node-es-filter-proxy",
+  "version": "0.0.1",
+  "description": "Filters requests before proxying valid ones to elasticsearch",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "elasticsearch",
+    "tresor"
+  ],
+  "author": "omer-ilhan",
+  "dependencies": {
+    "express": "^4.10.2",
+    "http-proxy": "^1.6.2",
+    "morgan": "^1.5.0",
+    "winston": "^0.8.3"
+  }
+}
