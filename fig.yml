@@ -97,3 +97,21 @@ proxytls:
     - pap
   ports:
     - "443:443"
+
+mysql:
+  build: components/mysql
+  ports:
+ 	- "3306:3306"
+ 	
+psql:
+  build: components/psql
+  ports:
+ 	- "5432:5432"
+
+pip:
+  build: components/tresor-pip
+  links:
+	- mysql
+	- psql
+  ports: 
+	- "8080:8080"
