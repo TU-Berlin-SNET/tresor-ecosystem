@@ -6,7 +6,7 @@
 	url = https://github.com/TU-Berlin-SNET/tresor-proxy.git
 [submodule "components/tresor-pdp"]
 	path = components/tresor-pdp
-	url = git@git.snet.tu-berlin.de:tresor/balana.git
+	url = https://github.com/TU-Berlin-SNET/tresor-pdp.git
 [submodule "components/tresor-pap"]
 	path = components/tresor-pap
-	url = git@git.snet.tu-berlin.de:tresor/tresor-policy-creation-tool.git
+	url = https://github.com/TU-Berlin-SNET/tresor-pap.git
