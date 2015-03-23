@@ -3,6 +3,19 @@ Run the TRESOR ecosystem as docker containers
 
 # Overview
 
+## Deployment
+
+1. If you did not already, install [docker](https://docs.docker.com/installation/#installation) and [fig](http://www.fig.sh/install.html).
+
+2. Clone the tresor-ecosystem repository and its submodules:
+```
+git clone --recursive https://github.com/TU-Berlin-SNET/tresor-ecosystem.git
+```
+3. Change into the directory and deploy with:
+```
+fig up
+```
+
 ## Components
 
 ## Authentication and Authorization
