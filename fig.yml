@@ -7,16 +7,16 @@ mongodb:
 elasticsearch:
   image: dockerfile/elasticsearch
   volumes:
-    - config/elasticsearch:/elasticsearch/config
+    - config/tresor-logging/elasticsearch:/elasticsearch/config
     - data/elasticsearch:/data
   expose:
     - "9200"
     - "9300"
 
 logstash:
-  build: components/logstash
-  volumes: 
-    - config/logstash/logstash.conf:/logstash/logstash.conf
+  build: components/tresor-logging/logstash
+  volumes:
+    - config/tresor-logging/logstash/logstash.conf:/logstash/logstash.conf
   links:
     - elasticsearch
   expose:
@@ -27,7 +27,7 @@ logstash:
     - "9500:9500"
 
 esfilter:
-  build: components/node-es-filter-proxy
+  build: components/tresor-logging/node-es-filter-proxy
   links:
     - elasticsearch
   environment:
@@ -39,7 +39,7 @@ esfilter:
     - "4004:4004"
 
 kibana:
-  build: components/node-dynconfig-kibana
+  build: components/tresor-logging/node-dynconfig-kibana
   environment:
     - KIBANA_HOST=0.0.0.0
     - KIBANA_PORT=3003
@@ -98,20 +98,20 @@ proxytls:
   ports:
     - "443:443"
 
-mysql:
-  build: components/mysql
-  ports:
- 	- "3306:3306"
- 	
-psql:
-  build: components/psql
-  ports:
- 	- "5432:5432"
-
-pip:
-  build: components/tresor-pip
-  links:
-	- mysql
-	- psql
-  ports: 
-	- "8080:8080"
+#mysql:
+#  build: components/mysql
+#  ports:
+#    - "3306:3306"
+#
+#psql:
+#  build: components/psql
+#  ports:
+#    - "5432:5432"
+#
+#pip:
+#  build: components/tresor-pip
+#  links:
+#    - mysql
+#    - psql
+#  ports:
+#    - "8080:8080"
