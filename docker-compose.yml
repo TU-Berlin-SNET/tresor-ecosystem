@@ -3,6 +3,8 @@ mongodb:
   command: mongod --smallfiles
   volumes:
     - data/mongodb:/data/db
+  expose:
+    - "27017"
 
 elasticsearch:
   image: dockerfile/elasticsearch
