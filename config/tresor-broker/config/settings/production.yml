@@ -12,7 +12,7 @@ demo_services:
     :name: 'TRESOR Policy Administration Point (PAP)'
   'logging':
     :uuid: 'f2f07c7a-1ada-4dbd-afda-3f3950c10fd9'
-    :url: 'http://logging'
+    :url: 'http://kibana:3003'
     :name: 'TRESOR Logging Interface'
   'tresordemo':
     :uuid: 'cc570ef5-9257-4152-9b2c-2c3632935f66'
