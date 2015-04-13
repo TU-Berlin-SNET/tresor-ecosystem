@@ -394,4 +394,4 @@ script.disable_dynamic: true
 http.cors.enabled: true
 
 # change this to the protocol, hostname and port used to access to kibana (excluding subURL)
-http.cors.allow-origin: /http:\/\/(localhost:3003)|(localhost:4004)/
+http.cors.allow-origin: /http:\/\/logging.*?/
