@@ -45,7 +45,7 @@ kibana:
   environment:
     - KIBANA_HOST=0.0.0.0
     - KIBANA_PORT=3003
-    - ES_URL=http://localhost:4004
+    - "ES_URL=http://\"+window.location.hostname+\":4004"
   ports:
     - "3003:3003"
 
@@ -85,6 +85,7 @@ proxyhttp:
     - broker
     - pdp
     - pap
+    - kibana
   ports:
     - "80:80"
 
@@ -97,6 +98,7 @@ proxytls:
     - broker
     - pdp
     - pap
+    - kibana
   ports:
     - "443:443"
 
