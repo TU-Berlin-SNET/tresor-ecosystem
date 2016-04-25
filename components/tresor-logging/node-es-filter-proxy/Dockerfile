@@ -1,4 +1,4 @@
-FROM dockerfile/nodejs
+FROM node:argon
 
 ADD . /opt/node-es-filter-proxy
 

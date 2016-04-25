@@ -7,7 +7,7 @@ mongodb:
     - "27017"
 
 elasticsearch:
-  image: dockerfile/elasticsearch
+  image: elasticsearch
   volumes:
     - config/tresor-logging/elasticsearch:/elasticsearch/config
     - data/elasticsearch:/data

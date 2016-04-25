@@ -1,4 +1,4 @@
-FROM dockerfile/nodejs
+FROM node:argon
 
 RUN wget https://download.elasticsearch.org/kibana/kibana/kibana-3.1.2.tar.gz &&\
     tar xvzf kibana-3.1.2.tar.gz &&\

@@ -1,4 +1,4 @@
-FROM dockerfile/java
+FROM java:7
 
 ENV LS_PKG_NAME logstash-1.4.2
 
